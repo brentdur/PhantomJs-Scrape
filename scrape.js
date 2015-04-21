@@ -17,11 +17,11 @@ if(status === 'success') {
     setTimeout(function() {
 
         //delete this
-        page.render('output.png');
+        page.render('example.png');
         //
         parse(page.content);
         exit();
-    }, 15000);
+    }, 20000);
   }, 5000);
 }
 else {
@@ -61,7 +61,11 @@ function parse(html){
     events.push(obj);
   }
   //delete this
-  fs.write('table.txt', events, 'w');
+	var output
+  for(var i = 0; i<events.length; i++){
+		output += events[i].print() + '\n';
+	}
+	fs.write('table.txt', output, 'w');
   //
 };
 
